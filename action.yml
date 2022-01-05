@@ -10,5 +10,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: docker run --rm ghcr.io/elsbrock/guix-base --entry-point=${{ inputs.entrypoint }} ${{ inputs.package-name }}
+    - run: docker run --rm ghcr.io/elsbrock/guix-base --entry-point=${{ inputs.entrypoint }} ${{ inputs.package-name }} | docker image load
       shell: bash
