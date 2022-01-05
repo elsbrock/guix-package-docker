@@ -1,0 +1,14 @@
+name: Guix Package Docker Image
+description: Builds a Docker image from a Guix package using `guix package`
+inputs:
+  package-name:
+    description: the Guix package name
+    required: true
+  entrypoint:
+    description: the entrypoint of the Docker image
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: docker run --rm ghcr.io/elsbrock/guix-base --entry-point=${{ inputs.entrypoint }} ${{ inputs.package-name }}
+      shell: bash
